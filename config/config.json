@@ -1,0 +1,18 @@
+{
+    "ApiKeyCoinmarketCap": {        
+        "Value": "",
+        "Comment": "Sign up for free on https://pro.coinmarketcap.com/signup. To get you API key go to the dashboard under 'Overview' and genereate the key. Copy and paste it's value here."
+    },
+    "ApiKeyForex": {        
+        "Value": "",
+        "Comment": "Sign up for free on https://openexchangerates.org/signup/free for a free plan. To get your API key go to the dashboard under 'App IDs' and genereate the key. Copy and paste it's value here."
+    },
+    "ApiKeyEthGas": {       
+        "Value": "",
+        "Comment": "Sign up for free on https://docs.defipulse.com/authentication. To get you API key go to the dashboard under 'Active API Key' and genereate the key. Copy and paste it's value here."
+    },
+    "AdditionalFiat": {
+        "Value": "EUR",
+        "Comment": "Enter your desired additional Fiat currency. The values will automatically be exchanged from USD $"
+    }
+}
