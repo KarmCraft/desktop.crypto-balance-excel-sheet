@@ -12,7 +12,7 @@ If you're anything like me then you have several cryptocurrenties and altcoins o
 - Enter symbol, public address and balance - the rest is calculated automagically - et voilà!
 - Support for any cryptocurrency (listed on coinmarketcap.com).
 - Support for multiple wallets containing multiple addresses.
-- Support for any available block explorer and direct navigation to entered address (customnizable).
+- Support for any available block explorer and direct navigation to entered address (customizable).
 - Periodically updates values from several APIs for all cryptocurrencies, Fiat currencies and fees/gas for BTC and ETH.
 - Calculates your specific sums of the main cryptocurrencies.
 - Automatic dominance calculation in a cool pie chart.
@@ -30,24 +30,24 @@ If you're anything like me then you have several cryptocurrenties and altcoins o
 
 ### Configuration
 
-- To take full advantage of all the features, open the file */config/config.json* with your favorite text editor and enter the required .information.
+- To take full advantage of all the features, open the file */config/config.json* with your favorite text editor and enter the required informations.
 - You will find further instructions, such as your Fiat currency and needed API Keys in the comments of each configuration item.
 
 :information_source: Any API key required comes from a provider with a reputable source and where the free plan is enough. You may be required to register with a username/email though.
 
-:information_source: The API Keys are optional. If you do not use them advanced features as conversion to BTC, 2nd Fiat and fee calculation will not work. I suggest to at least configure the CoinMarketCap API Key.
+:information_source: The API Keys are optional. If you do not use them some advanced features like conversion to BTC, 2nd Fiat and fee calculation will not work. I suggest to at least configure the CoinMarketCap API Key.
 
 ### Using the sheet
 
-- Start the workbook *Queries.xlsx* and leave it open. Confirm possible messages from Excel. You can minimize it after that, it will do its thing and update the queries periodically.
+- Start the workbook *Queries.xlsx* and leave it open. Confirm possible messages from Excel. You can minimize it after that, it will do its thing and update the queries periodically in the background.
 - Start the workbook *Portfolio.xlsx*. Enter your holdings by filling out the tables. For details have a look at the examples in it and replace the fields in column A troguh E with your own values. You can replace with your own values. Delete unneeded wallet tables or add more by duplicating them.
 - You can add several addresses of the same cryptocurrency, in fact you should add **all** of them :smile:
 
 :bulb: Add more rows to the tables by selecting a cell in the table and pressing <kbd>CTRL</kbd> + <kbd>+</kbd>
 
-:bulb: To add a new table select everything in an existing table, copy and paste in the row before the totals table.
+:bulb: To add a new table select a whole table by clicking anywhere in the table and pressing <kbd>CTRL</kbd> + <kbd>A</kbd>, copy it with <kbd>CTRL</kbd> + <kbd>V</kbd>and paste with <kbd>CTRL</kbd> + <kbd>V</kbd> in the row before the totals table.
 
-:information_source: ETH ERC20 Tokens: To add an ERC20 Token add the prefix "ERC20" in the NAME column.
+:information_source: ETH ERC20 Tokens: To add an ERC20 Token prefix the NAME of the token with "ERC20".
 
 :information_source: The basic features will work even if you do not set up your API Keys, but the most useful functions will be disabled and the respective columns will stay empty.
 
