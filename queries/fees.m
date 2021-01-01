@@ -35,9 +35,20 @@ let
         ),
     ETHSource = Json.Document(Web.Contents(ETHApiUrl)),
     ConvertedToTable = Record.ToTable(ETHSource),
+    DividedColumn =
+        Table.TransformColumns(
+            ConvertedToTable,
+            {
+                {
+                    "Value",
+                    each _ / 10,
+                    type number
+                }
+            }
+        ),
     ReplacedFast =
         Table.ReplaceValue(
-            ConvertedToTable,
+            DividedColumn,
             "fast",
             "ETH Fast",
             Replacer.ReplaceValue,
