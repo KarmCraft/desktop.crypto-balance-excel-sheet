@@ -26,4 +26,6 @@
 	{"symbol": "ALIAS", "baseurl" : "https://chainz.cryptoid.info/alias/address.dws?{ADDRESS}"},
 	{"symbol": "VTC", "baseurl" : "https://www.coinexplorer.net/VTC/address/{ADDRESS}"},
 	{"symbol": "RVN", "baseurl" : "https://explorer.ravenland.org/address/{ADDRESS}"},
+	{"symbol": "SOL", "baseurl" : "https://solscan.io/account/{ADDRESS}"},
+	{"symbol": "BNB", "baseurl" : "https://bscscan.com/address/{ADDRESS}"},	
 ]
