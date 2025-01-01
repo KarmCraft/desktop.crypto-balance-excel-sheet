@@ -996,4 +996,5 @@
 	{"symbol": "FXP", "baseurl" : "https://etherscan.io/token/0x14ddda446688b73161aa1382f4e4343353af6fc8?a={ADDRESS}"},
 	{"symbol": "MOC", "baseurl" : "https://etherscan.io/token/0x865ec58b06bf6305b886793aa20a2da31d034e68?a={ADDRESS}"},
 	{"symbol": "LEXT", "baseurl" : "https://etherscan.io/token/0xd6c523854f08759df65fd335c80a5609e2a28d5f?a={ADDRESS}"},
+	{"symbol": "OHM", "baseurl" : "https://etherscan.io/token/0x383518188c0c6d7730d91b2c03a03c837814a899?a={ADDRESS}"},
 ]
