@@ -5,7 +5,7 @@ let
             {
                 "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=",
                 ApiKey,
-                "&limit=1000"
+                "&limit=3500"
             }
         ),
     Source =
