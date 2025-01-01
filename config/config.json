@@ -9,9 +9,13 @@
     },
     "ApiKeyEthGas": {       
         "Value": "",
-        "Comment": "Sign up for free on https://docs.defipulse.com/authentication. To get you API key go to the dashboard under 'Active API Key' and genereate the key. Copy and paste it's value here."
+        "Comment": "Sign up for free on https://etherscan.io/apis. To get you API key go to your profile, chose API Keys and genereate the key. Copy and paste the token value here."
     },
     "AdditionalFiat": {
+        "Value": "EUR",
+        "Comment": "Enter your desired additional Fiat currency. The values will automatically be exchanged from USD $"
+    },
+    "AdditionalFiat2": {
         "Value": "EUR",
         "Comment": "Enter your desired additional Fiat currency. The values will automatically be exchanged from USD $"
     }
