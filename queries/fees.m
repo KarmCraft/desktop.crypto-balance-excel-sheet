@@ -1,86 +1,26 @@
 let
-    BTCApiurl = "https://bitcoinfees.earn.com/api/v1/fees/recommended",
-    BTCSource = Json.Document(Web.Contents(BTCApiurl)),
-    BTCConvertedToTable = Record.ToTable(BTCSource),
-    BTCReplacedFast =
-        Table.ReplaceValue(
-            BTCConvertedToTable,
-            "fastestFee",
-            "BTC Fast",
-            Replacer.ReplaceText,
-            {"Name"}
-        ),
-    BTCReplacedAverage =
-        Table.ReplaceValue(
-            BTCReplacedFast,
-            "halfHourFee",
-            "BTC Average",
-            Replacer.ReplaceText,
-            {"Name"}
-        ),
-    BTCFees =
-        Table.ReplaceValue(
-            BTCReplacedAverage,
-            "hourFee",
-            "BTC Slow",
-            Replacer.ReplaceText,
-            {"Name"}
-        ),
+    BTCApiUrl = "https://bitcoiner.live/api/fees/estimates/latest",
+    BTCSource = Json.Document(Web.Contents(BTCApiUrl)),
+    BTCFeesRaw = BTCSource[estimates][30][sat_per_vbyte],
+    #"Converted to Table" = #table(1, {{BTCFeesRaw}}),
+    #"Added Custom" = Table.AddColumn(#"Converted to Table", "Name", each "BTC Fees s/vB"),
+    #"Reordered Columns" = Table.ReorderColumns(#"Added Custom",{"Name", "Column1"}),
+    BTCFees = Table.RenameColumns(#"Reordered Columns",{{"Column1", "Value"}}),
+
     ETHApiUrl =
         Text.Combine(
             {
-                "https://data-api.defipulse.com/api/v1/egs/api/ethgasAPI.json?api-key=",
-                GetCellValue("CONFIG_API_ETHGAS")
+                "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=",
+				GetCellValue("CONFIG_API_ETHGAS")
             }
         ),
     ETHSource = Json.Document(Web.Contents(ETHApiUrl)),
-    ConvertedToTable = Record.ToTable(ETHSource),
-    DividedColumn =
-        Table.TransformColumns(
-            ConvertedToTable,
-            {
-                {
-                    "Value",
-                    each _ / 10,
-                    type number
-                }
-            }
-        ),
-    ReplacedFast =
-        Table.ReplaceValue(
-            DividedColumn,
-            "fast",
-            "ETH Fast",
-            Replacer.ReplaceValue,
-            {"Name"}
-        ),
-    ReplacedSlow =
-        Table.ReplaceValue(
-            ReplacedFast,
-            "safeLow",
-            "ETH Slow",
-            Replacer.ReplaceValue,
-            {"Name"}
-        ),
-    ReplacedAverage =
-        Table.ReplaceValue(
-            ReplacedSlow,
-            "average",
-            "ETH Average",
-            Replacer.ReplaceValue,
-            {"Name"}
-        ),
-    ETHFees =
-        Table.SelectRows(
-            ReplacedAverage,
-            each
-                [Name]
-                = "ETH Fast"
-                or [Name]
-                = "ETH Average"
-                or [Name]
-                = "ETH Slow"
-        ),
+    ETHFeesRaw = ETHSource[result],
+    #"Converted to Table1" = Record.ToTable(ETHFeesRaw),
+    #"Filtered Rows" = Table.SelectRows(#"Converted to Table1", each [Name] = "ProposeGasPrice"),
+    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows","ProposeGasPrice","ETH Proposed (gwei)",Replacer.ReplaceText,{"Name"}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"Value", type number}}),
+    ETHFees = Table.TransformColumns(#"Changed Type",{{"Value", each Number.Round(_, 2), type number}}),
     Fees =
         Table.Combine(
             {
